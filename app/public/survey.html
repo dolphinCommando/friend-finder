@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lange="en">
+<head>
+  <meta charset="utf-8"> 	<title>FF Survey</title>
+  <script src="https://code.jquery.com/jquery.js"></script>
+</head>
+
+<body>
+  <a href="/">Home</a>
+  <a href="/survey">Survey</a>
+  <a href="/api/friends">View JSON</a>
+
+  <form>
+    <button type="submit" id="submit">Submit</button>
+  </form>
+  <script>
+    var myFriend = {
+      "name": "Dude",
+      "photo": "nope",
+      "scores": [5,4,3,2,1]
+    }
+    $('#submit').on('click', function() {
+      event.preventDefault();
+      $.post('/api/friends', myFriend)
+		  .then(data => {
+			  console.log(data);
+			  alert('Adding you...');
+		  });
+    });
+  </script>
+</body>
+</html>
