@@ -1,31 +1,160 @@
 <!DOCTYPE html>
-<html lange="en">
+<html lang="en">
 <head>
-  <meta charset="utf-8"> 	<title>FF Survey</title>
-  <script src="https://code.jquery.com/jquery.js"></script>
+  <meta charset="utf-8"> 	
+  <title>FF Survey</title>
+  <script
+  src="https://code.jquery.com/jquery-3.3.1.js"
+  integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+  crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 </head>
 
 <body>
-  <a href="/">Home</a>
-  <a href="/survey">Survey</a>
-  <a href="/api/friends">View JSON</a>
+  <div class="container">
+    <h1 class="display-4">Survey Questions</h1>
+    <hr class="my-4">
+    <form>
+      <p class="font-weight-bold">About you</p>
+      <div class="form-group">
+        <label for="survey-name">Name</label>
+        <input type="input" class="form-control"  id="survey-name">
+      </div>
+      <div class="form-group">
+        <label for="survey-name">Photo</label>
+        <input type="input" class="form-control"  id="survey-photo" placeholder="Enter link to photo">
+      </div>
+      <hr class="my-4">
+      <p class="font-weight-bold">Answer the following questions on scale from 1 to 5, with 1 meaning you HATE it, and 5 being you LOVE it.</p>
+      <div class="form-group">
+          <label for="q1">I like sports</label>
+          <select class="form-control qa" id="q1">
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+            <option>5</option>
+          </select>
+      </div>
+      <div class="form-group">
+          <label for="q2">I like reading</label>
+          <select class="form-control qa" id="q2">
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+            <option>5</option>
+          </select>
+      </div>
+      <div class="form-group">
+          <label for="q3">I like nightlife</label>
+          <select class="form-control qa" id="q3">
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+            <option>5</option>
+          </select>
+      </div>
+      <div class="form-group">
+          <label for="q4">I like the outdoors</label>
+          <select class="form-control qa" id="q4">
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+            <option>5</option>
+          </select>
+      </div>
+      <div class="form-group">
+          <label for="q5">I like social media</label>
+          <select class="form-control qa" id="q5">
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+            <option>5</option>
+          </select>
+      </div>
+      <div class="form-group">
+          <label for="q6">I like politics</label>
+          <select class="form-control qa" id="q6">
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+            <option>5</option>
+          </select>
+      </div>
+      <div class="form-group">
+          <label for="q7">I like cheeseburgers</label>
+          <select class="form-control qa" id="q7">
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+            <option>5</option>
+          </select>
+      </div>
+      <div class="form-group">
+          <label for="q8">I like science</label>
+          <select class="form-control qa" id="q8">
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+            <option>5</option>
+          </select>
+      </div>
+      <div class="form-group">
+          <label for="q9">I like people</label>
+          <select class="form-control qa" id="q9">
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+            <option>5</option>
+          </select>
+      </div>
+      <div class="form-group">
+          <label for="q10">I like doing things</label>
+          <select class="form-control qa" id="q10">
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+            <option>5</option>
+          </select>
+      </div>
+      <button type="submit" class="btn btn-primary btn-lg btn-block submit">Submit</button>
+    </form>
+    <ul class="nav">
+      <li class="nav-item">
+        <a class="nav-link" href="https://github.com/dolphinCommando/friend-finder" target="_blank">Github</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/api/friends">API Friends List</a>
+      </li> 
+    </ul>
+  </div>
 
-  <form>
-    <button type="submit" id="submit">Submit</button>
-  </form>
   <script>
-    var myFriend = {
-      "name": "Dude",
-      "photo": "nope",
-      "scores": [5,4,3,2,1]
-    }
-    $('#submit').on('click', function() {
+    $('.submit').on('click', function(event) {
       event.preventDefault();
-      $.post('/api/friends', myFriend)
+      var name = $('#survey-name').val().trim();
+      var photo = $('#survey-photo').val().trim();
+      var scores = [$('#q1').val(), $('#q2').val(), $('#q3').val(), $('#q4').val(), $('#q5').val(), $('#q6').val(), $('#q7').val(), $('#q8').val(), $('#q9').val()];
+      var surveyJSON = {
+        "name": name,
+        "photo": photo,
+        "scores": scores
+      }
+      $.post('/api/friends', surveyJSON)
 		  .then(data => {
-			  console.log(data);
-			  alert('Adding you...');
-		  });
+        console.log(data);
+        alert('Thank you for filling out the survey!');
+      });
     });
   </script>
 </body>

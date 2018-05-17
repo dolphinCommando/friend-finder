@@ -20,6 +20,7 @@ exports.postFriends = function(app) {
         friends.push(newFriend);
         fs.writeFile(fd, JSON.stringify(friends), (err) => {
           if (err) throw err;
+          // use app.get('/survey') and function to show modal
         });
       });
     })
