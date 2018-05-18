@@ -15,7 +15,7 @@ html.homeRoute(app, path)
 html.surveyRoute(app, path);
 
 apiRoutes.getFriends(app);
-apiRoutes.postFriends(app)
+apiRoutes.postFriends(app);
 
 
 app.listen(PORT, function() {

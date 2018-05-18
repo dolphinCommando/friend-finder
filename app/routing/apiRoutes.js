@@ -17,12 +17,12 @@ exports.postFriends = function(app) {
       var friends = JSON.parse(data);
       app.post('/api/friends', function(req, res) {
         var myself = req.body;
-        console.log(matchFriends(friends, myself));
+        var newFriend = matchFriends(friends, myself);
         friends.push(myself)
         fs.writeFile(fd, JSON.stringify(friends), (err) => {
           if (err) throw err;
         });
-        
+        res.send(newFriend);
       });
     })
   });
@@ -44,5 +44,12 @@ function matchFriends(friends, myself) {
   }
   return friends[minIdx];
 }
+/*
+function displayModal(friend) {
+  $('#modal-name').text(friend.name);
+  $('#modal-img').attr('src', friend.photo);
+  $('#myModal').modal();
+}
+*/
 
 

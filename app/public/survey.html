@@ -58,7 +58,7 @@
           </select>
       </div>
       <div class="form-group">
-          <label for="q4">I like the outdoors</label>
+          <label for="q4">I like traveling</label>
           <select class="form-control qa" id="q4">
             <option>1</option>
             <option>2</option>
@@ -78,7 +78,7 @@
           </select>
       </div>
       <div class="form-group">
-          <label for="q6">I like politics</label>
+          <label for="q6">I like dogs</label>
           <select class="form-control qa" id="q6">
             <option>1</option>
             <option>2</option>
@@ -88,7 +88,7 @@
           </select>
       </div>
       <div class="form-group">
-          <label for="q7">I like cheeseburgers</label>
+          <label for="q7">I like junk food</label>
           <select class="form-control qa" id="q7">
             <option>1</option>
             <option>2</option>
@@ -118,7 +118,7 @@
           </select>
       </div>
       <div class="form-group">
-          <label for="q10">I like doing things</label>
+          <label for="q10">I like staying active</label>
           <select class="form-control qa" id="q10">
             <option>1</option>
             <option>2</option>
@@ -137,6 +137,21 @@
         <a class="nav-link" href="/api/friends">API Friends List</a>
       </li> 
     </ul>
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="modal-name"></h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <img src="#" alt="You have a friend match!" class="img-fluid rounded mx-auto d-block" id="modal-img">
+            </div>
+          </div>
+        </div>
+      </div>
   </div>
 
   <script>
@@ -144,7 +159,7 @@
       event.preventDefault();
       var name = $('#survey-name').val().trim();
       var photo = $('#survey-photo').val().trim();
-      var scores = [$('#q1').val(), $('#q2').val(), $('#q3').val(), $('#q4').val(), $('#q5').val(), $('#q6').val(), $('#q7').val(), $('#q8').val(), $('#q9').val()];
+      var scores = [$('#q1').val(), $('#q2').val(), $('#q3').val(), $('#q4').val(), $('#q5').val(), $('#q6').val(), $('#q7').val(), $('#q8').val(), $('#q9').val(), $('#q10').val()];
       var surveyJSON = {
         "name": name,
         "photo": photo,
@@ -152,8 +167,9 @@
       }
       $.post('/api/friends', surveyJSON)
 		  .then(data => {
-        console.log(data);
-        alert('Thank you for filling out the survey!');
+        $('#modal-name').text('You matched with ' + data.name);
+        $('#modal-img').attr('src', data.photo);
+        $('#myModal').modal();
       });
     });
   </script>
