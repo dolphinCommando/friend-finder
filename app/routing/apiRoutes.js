@@ -16,13 +16,33 @@ exports.postFriends = function(app) {
       if (err) throw err; 
       var friends = JSON.parse(data);
       app.post('/api/friends', function(req, res) {
-        var newFriend = req.body;
-        friends.push(newFriend);
+        var myself = req.body;
+        console.log(matchFriends(friends, myself));
+        friends.push(myself)
         fs.writeFile(fd, JSON.stringify(friends), (err) => {
           if (err) throw err;
-          // use app.get('/survey') and function to show modal
         });
+        
       });
     })
   });
 }
+
+function matchFriends(friends, myself) {
+  var compareArr = [];
+  for (var j = 0; j < friends.length; j ++) {
+    compareArr.push(0);
+    for (var i = 0; i < myself.scores.length; i++) {
+      compareArr[j] += Math.abs(+myself.scores[i] - +friends[j].scores[i]);   
+    }
+  }
+  var minIdx = 0;
+  for (var k = 0; k < compareArr.length; k++) {
+    if (compareArr[k] < compareArr[minIdx]) {
+      minIdx = k;
+    }
+  }
+  return friends[minIdx];
+}
+
+

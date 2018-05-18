@@ -1,1 +1,1 @@
-[{"name":"Matt","photo":"img_here","scores":["5","4","1","2","3"]},{"name":"Dude","photo":"nope","scores":["5","4","3","2","1"]},{"name":"Dude","photo":"nope","scores":["5","4","3","2","1"]},{"name":"Matthew","photo":"https://upload.wikimedia.org/wikipedia/commons/thumb/c/c4/Anna%27s_hummingbird.jpg/1200px-Anna%27s_hummingbird.jpg","scores":["3","5","1","4","1","3","3","5","3"]}]
+[{"name":"Matthew","photo":"https://upload.wikimedia.org/wikipedia/commons/thumb/c/c4/Anna%27s_hummingbird.jpg/1200px-Anna%27s_hummingbird.jpg","scores":["3","5","1","4","1","3","3","5","3"]}]
