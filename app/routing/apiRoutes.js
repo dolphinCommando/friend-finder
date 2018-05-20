@@ -1,30 +1,18 @@
-var fs = require('fs');
+var friends = require('../data/friends.js');
 
 exports.getFriends = function(app) {
   app.get('/api/friends', function(req, res) {
-    fs.readFile('./app/data/friends.js', (err, data) => {
-      if (err) throw err;
-      return res.json(JSON.parse(data));
-    });
+    return res.json(friends);
   });  
 }
 
 exports.postFriends = function(app) {
-  fs.open('./app/data/friends.js', 'r+', (err, fd) => {
-    if (err) throw err;
-    fs.readFile(fd, (err, data) => {
-      if (err) throw err; 
-      var friends = JSON.parse(data);
-      app.post('/api/friends', function(req, res) {
-        var myself = req.body;
-        var newFriend = matchFriends(friends, myself);
-        friends.push(myself)
-        fs.writeFile(fd, JSON.stringify(friends), (err) => {
-          if (err) throw err;
-        });
-        res.send(newFriend);
-      });
-    })
+  app.post('/api/friends', function(req, res) {
+    var myself = req.body;
+    var newFriend = matchFriends(friends, myself);
+    friends.push(myself)
+    
+    res.send(newFriend);
   });
 }
 
@@ -44,12 +32,6 @@ function matchFriends(friends, myself) {
   }
   return friends[minIdx];
 }
-/*
-function displayModal(friend) {
-  $('#modal-name').text(friend.name);
-  $('#modal-img').attr('src', friend.photo);
-  $('#myModal').modal();
-}
-*/
+
 
 

@@ -1,0 +1,28 @@
+
+.ambient {
+    position: absolute; 
+    top: -15px; 
+    z-index:-1;
+    width: 100vw;
+    height: 110vh;
+}
+
+.glyph-align {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.glyph {
+    margin-right: 10px;
+}
+#glyph-globe {
+    width: 75px;
+    height: 75px;
+}
+
+#survey-link {
+    width: 300px;
+    margin: 45px auto;
+}
+
