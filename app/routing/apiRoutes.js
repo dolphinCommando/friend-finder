@@ -1,19 +1,20 @@
 var friends = require('../data/friends.js');
 
-exports.getFriends = function(app) {
-  app.get('/api/friends', function(req, res) {
-    return res.json(friends);
-  });  
-}
+function APIRoute(app) {
+  this.app = app;
 
-exports.postFriends = function(app) {
-  app.post('/api/friends', function(req, res) {
+  this.app.get('/api/friends', function(req, res) {
+    return res.json(friends);
+  });
+  
+  this.app.post('/api/friends', function(req, res) {
     var myself = req.body;
     var newFriend = matchFriends(friends, myself);
     friends.push(myself)
     
     res.send(newFriend);
   });
+
 }
 
 function matchFriends(friends, myself) {
@@ -32,6 +33,8 @@ function matchFriends(friends, myself) {
   }
   return friends[minIdx];
 }
+
+module.exports = APIRoute;
 
 
 

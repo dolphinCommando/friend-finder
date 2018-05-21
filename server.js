@@ -10,14 +10,8 @@ app.use(bodyParser.json());
 
 app.use(express.static('./app/public'));
 
-var html = require('./app/routing/htmlRoutes.js');
-var apiRoutes = require('./app/routing/apiRoutes.js');
-
-html.homeRoute(app, path)
-html.surveyRoute(app, path);
-
-apiRoutes.getFriends(app);
-apiRoutes.postFriends(app);
+require('./app/routing/htmlRoutes.js')(app,path);
+require('./app/routing/apiRoutes.js')(app);
 
 
 app.listen(PORT, function() {
