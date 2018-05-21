@@ -4,8 +4,8 @@ Rate activities on a scale from 1 to 5, with 1 being you HATE it, and 5 being yo
 Friend-Finder matches you with person who thinks the most like you do. 
 
 ### Site
-**Check out Friend-Finder on Heroku** 
-
+**Friend-Finder is hosted on Heroku** 
+[Go to Heroku Site](https://serene-journey-73867.herokuapp.com/)
 ### Build
 
 Friend-Finder was written in HTML, CSS, Bootstrap, Javascript, JQuery, NodeJS, and Express.
