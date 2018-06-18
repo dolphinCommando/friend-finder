@@ -1,7 +1,8 @@
 # friend-finder
 
 Rate activities on a scale from 1 to 5, with 1 being you HATE it, and 5 being you LOVE it. 
-Friend-Finder matches you with person who thinks the most like you do. 
+Friend-Finder matches you with person who thinks the most like you do. You may find that your
+closest friends are fictional characters from _Star Trek: The Next Generation_
 
 
 ### Site
